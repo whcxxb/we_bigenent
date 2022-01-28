@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/lib/layui/css/layui.css">
+  <link rel="stylesheet" href="/assets/lib/cropper/cropper.css">
+  <link rel="stylesheet" href="/assets/css/article/art_pub.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="layui-card">
+    <div class="layui-card-header">
+      <span>发布文章</span>
+    </div>
+    <div class="layui-card-body">
+      <form class="layui-form" id="form-pub">
+        <div class="layui-form-item">
+          <label class="layui-form-label">文章标题</label>
+          <div class="layui-input-block">
+            <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off"
+              class="layui-input">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">文章类别</label>
+          <div class="layui-input-block">
+            <select name="cate_id" lay-verify="required">
+            </select>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+          </div>
+        </div>
+        <!-- 富文本编辑区域 -->
+        <div class="layui-form-item">
+          <label class="layui-form-label">文章内容</label>
+          <div class="layui-input-block" style="height: 400px;">
+            <textarea name="content"></textarea>
+          </div>
+        </div>
+        <!-- 图片编辑区域 -->
+        <div class="layui-form-item">
+          <label class="layui-form-label">文章封面</label>
+          <div class="layui-input-block cover-box">
+            <div class="cover-left">
+              <img id="image" src="/assets/images/sample.jpg">
+            </div>
+            <div class="cover-right">
+              <div class="img-preview"></div>
+              <button type="button" class="layui-btn layui-btn-danger" id="btnImageFile">选择封面</button>
+              <input type="file" id="coverfile" style="display:none"/>
+            </div>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit>发布</button>
+            <button id="btnSave2" class="layui-btn" lay-submit>存为草稿</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 列表数据模板 -->
+  <script type="text/html" id="tpl-catelist">
+    <option value="">所有分类</option>
+    {{each data}}
+     <option value="{{$value.id}}">{{$value.name}}</option>
+    {{/each}}
+   </script>
+
+  <script src="/assets/lib/layui/layui.all.js"></script>
+  <script src="/assets/lib/jquery.js"></script>
+  <script src="/assets/js/baseAPI.js"></script>
+  <script src="/assets/lib/template-web.js"></script>
+  <script src="/assets/lib/tinymce/tinymce.min.js"></script>
+  <script src="/assets/lib/tinymce/tinymce_setup.js"></script>
+  <script src="/assets/lib/cropper/Cropper.js"></script>
+  <script src="/assets/lib/cropper/jquery-cropper.js"></script>
+  <script src="/assets/js/art_pub.js"></script>
+</body>
+
+</html>
